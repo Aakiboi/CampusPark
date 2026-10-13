@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7f4">
+  <title>CampusPark — Find your spot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#" aria-label="CampusPark home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 19V6.5A1.5 1.5 0 0 1 6.5 5H17a2 2 0 0 1 2 2v12M3 19h18M9 9h5.5a2.5 2.5 0 0 1 0 5H9V9Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        CampusPark
+      </a>
+      <div class="topbar-right">
+        <div class="campus-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9" r="2.2" stroke="currentColor" stroke-width="1.7"/></svg>
+          Northwood University
+        </div>
+        <div class="avatar" aria-label="Student account">JD</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Your campus, parked</p>
+        <h1 id="page-title">Find your spot.</h1>
+        <p class="subtitle">Less circling, more getting where you need to go.</p>
+      </div>
+      <div class="updated"><span class="updated-dot"></span>Live lot updates <span id="updated-time">just now</span></div>
+    </section>
+
+    <section class="search-panel" aria-label="Find parking near a building">
+      <div class="field">
+        <label for="building-select">I'M HEADED TO</label>
+        <div class="select-wrap">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V7l8-4 8 4v13M8 20v-5h8v5M8 9h.01M12 9h.01M16 9h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <select id="building-select" aria-label="Choose your destination building">
+            <option value="library">Main Library</option>
+            <option value="science">Science Hall</option>
+            <option value="student">Student Center</option>
+            <option value="arts">Arts &amp; Humanities</option>
+            <option value="admin">Administration</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="permit-select">YOUR PARKING PERMIT</label>
+        <div class="select-wrap">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 8h14M7 4v4m10-4v4M6 5h12a1 1 0 0 1 1 1v13H5V6a1 1 0 0 1 1-1ZM8 12h3m2 0h3m-8 4h3m2 0h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <select id="permit-select" aria-label="Choose your permit type">
+            <option value="any">Any permit / visitor</option>
+            <option value="student">Student permit</option>
+            <option value="commuter">Commuter permit</option>
+            <option value="visitor">Visitor pass</option>
+          </select>
+        </div>
+      </div>
+      <button class="search-button" id="find-button" type="button">Find parking <span aria-hidden="true">→</span></button>
+    </section>
+
+    <section class="summary" aria-label="Parking overview">
+      <div class="stat">
+        <span class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19V6.5A1.5 1.5 0 0 1 6.5 5H17a2 2 0 0 1 2 2v12M3 19h18M9 9h5.5a2.5 2.5 0 0 1 0 5H9V9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span><span class="stat-value" id="open-lots">4</span><span class="stat-label">lots with space</span></span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19h16M6 19V9h12v10M9 9V5h6v4M9 13h.01M12 13h.01M15 13h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span><span class="stat-value" id="open-spaces">438</span><span class="stat-label">open spaces nearby</span></span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon neutral">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9" r="2.2" stroke="currentColor" stroke-width="1.7"/></svg>
+        </span>
+        <span><span class="stat-value" id="nearest-distance">4 min</span><span class="stat-label">to your destination</span></span>
+      </div>
+    </section>
+
+    <section class="content-grid" aria-label="Parking lots and campus map">
+      <div>
+        <div class="list-heading">
+          <h2>Parking near you</h2>
+          <div class="list-actions">
+            <span class="result-count" id="result-count" aria-live="polite">5 lots</span>
+            <button class="add-lot-button" id="add-lot-button" type="button">+ Add lot</button>
+          </div>
+        </div>
+        <p class="crud-message" id="crud-message" role="status" aria-live="polite"></p>
+        <div class="filters" role="group" aria-label="Filter parking lots">
+          <button class="filter active" data-filter="all" type="button" aria-pressed="true">All lots</button>
+          <button class="filter" data-filter="available" type="button" aria-pressed="false">Space available</button>
+          <button class="filter" data-filter="visitor" type="button" aria-pressed="false">Visitor parking</button>
+        </div>
+        <div class="lot-list" id="lot-list"></div>
+        <dialog class="lot-dialog" id="lot-dialog" aria-labelledby="dialog-title">
+          <div class="dialog-content">
+            <div class="dialog-heading">
+              <div><h2 id="dialog-title">Add a parking lot</h2><p>Update the lot details and current availability.</p></div>
+              <button class="dialog-close" id="dialog-close" type="button" aria-label="Close dialog">×</button>
+            </div>
+            <form class="lot-form" id="lot-form" novalidate>
+              <input type="hidden" id="lot-id">
+              <div class="form-field"><label for="lot-name-input">Lot name</label><input id="lot-name-input" name="name" required maxlength="60" autocomplete="off"></div>
+              <div class="form-field"><label for="lot-address-input">Location or address</label><input id="lot-address-input" name="address" required maxlength="100" autocomplete="off"></div>
+              <div class="form-pair">
+                <div class="form-field"><label for="lot-capacity-input">Total spaces</label><input id="lot-capacity-input" name="capacity" type="number" min="1" max="10000" step="1" required></div>
+                <div class="form-field"><label for="lot-spaces-input">Available spaces</label><input id="lot-spaces-input" name="spaces" type="number" min="0" max="10000" step="1" required></div>
+              </div>
+              <div class="form-pair">
+                <div class="form-field">
+                  <label for="lot-permit-input">Permit requirement</label>
+                  <select id="lot-permit-input" name="permit">
+                    <option value="student">Student permit</option>
+                    <option value="commuter">Commuter permit</option>
+                    <option value="visitor">Visitor pass required</option>
+                    <option value="both">Student or commuter</option>
+                  </select>
+                </div>
+                <div class="form-field"><label for="lot-walk-input">Walk to <span id="walk-building-label">Main Library</span> (min)</label><input id="lot-walk-input" name="walk" type="number" min="1" max="60" step="1" required></div>
+              </div>
+              <p class="dialog-error" id="dialog-error" role="alert"></p>
+              <div class="dialog-actions">
+                <button class="cancel-button" id="dialog-cancel" type="button">Cancel</button>
+                <button class="save-button" type="submit">Save lot</button>
+              </div>
+            </form>
+          </div>
+        </dialog>
+      </div>
+
+      <aside class="map-card" aria-label="Map and directions">
+        <div class="map-heading">
+          <div><h2>Campus map</h2><p>Lots and buildings at a glance</p></div>
+          <div class="map-legend" aria-label="Map status legend">
+            <span class="legend-item"><i class="legend-dot"></i>Open</span>
+            <span class="legend-item"><i class="legend-dot limited"></i>Filling up</span>
+          </div>
+        </div>
+        <div class="campus-map" role="group" aria-label="Illustrated campus map. Select an available parking lot for directions.">
+          <div class="green-space green-one"></div><div class="green-space green-two"></div><div class="green-space green-three"></div>
+          <div class="map-road road-h road-one"></div><div class="map-road road-h road-two"></div>
+          <div class="map-road road-v road-three"></div><div class="map-road road-v road-four"></div>
+          <div class="building main-library" data-building="library">Main<br>Library</div>
+          <div class="building science" data-building="science">Science<br>Hall</div>
+          <div class="building student" data-building="student">Student<br>Center</div>
+          <div class="building arts" data-building="arts">Arts &amp;<br>Humanities</div>
+          <div class="building admin" data-building="admin">Admin</div>
+          <div class="map-path" id="map-path" aria-hidden="true"></div>
+          <div id="map-markers"></div>
+        </div>
+        <div class="map-caption"><span>Northwood University · Central campus</span><span>Map data is illustrative</span></div>
+        <div class="route-panel" id="route-panel" aria-live="polite">
+          <p class="route-title" id="route-title"></p>
+          <p class="route-detail" id="route-detail"></p>
+          <a class="route-link" id="route-link" href="#" target="_blank" rel="noopener noreferrer">Open walking directions ↗</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>CampusPark · Northwood University</span>
+      <span>Parking availability is a demo and may not reflect real-time conditions.</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
